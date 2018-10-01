@@ -16,10 +16,14 @@ def wordToElements(word):
 
 
 match = regexBuilder()
-for file in sys.argv[1:]:
-    with open(file,"r") as f:
-        write = file+".elem"
-        with open(write, "w") as w:
-            lines = f.readlines()
-            for line in lines:
-                w.write(wordToElements(line)+"\n")
+if len(sys.argv) > 1:
+    for file in sys.argv[1:]:
+        with open(file,"r") as f:
+            write = file+".elem"
+            with open(write, "w") as w:
+                lines = f.readlines()
+                for line in lines:
+                    w.write(wordToElements(line)+"\n")
+else:
+    word = input("Give a word to be transformed\n")
+    print(wordToElements(word))
