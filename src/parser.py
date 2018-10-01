@@ -1,12 +1,25 @@
+#!/usr/local/bin/python3.7
 import re
+import sys
 from PeriodicTable import table
 
 tableKeys = list(map(lambda x: x.lower(), table.keys()))
-sortedTableKeys =  sorted(tablekeys, key=len, reverse=True)
-print(sortedTablekeys)
-string = input("dada uma string\n").lower()
-match = re.compile('('+'|'.join(sortedTablekeys)+')')
-split = re.split(match,string)
-print(split)
-res = '-'.join(filter(None,split))
-print(res)
+def regexBuilder():
+    sortedTableKeys =  sorted(tableKeys, key=len, reverse=True)
+    return re.compile('('+'|'.join(sortedTableKeys)+')')
+
+
+def wordToElements(word):
+    split = re.split(match,word)
+    return '-'.join(filter(None, [ s for s in split if s in tableKeys ] ))
+
+
+
+match = regexBuilder()
+for file in sys.argv[1:]:
+    with open(file,"r") as f:
+        write = file+".elem"
+        with open(write, "w") as w:
+            lines = f.readlines()
+            for line in lines:
+                w.write(wordToElements(line)+"\n")
