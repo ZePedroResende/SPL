@@ -8,7 +8,6 @@ def regexBuilder(tableKeys):
     sortedTableKeys =  sorted(tableKeys, key=len, reverse=True)
     return re.compile('('+'|'.join(sortedTableKeys)+')')
 
-
 def wordToElements(word, tableKeys):
     split = re.split(regexBuilder(tableKeys), word)
     split = list(filter(None, split))
@@ -17,19 +16,19 @@ def wordToElements(word, tableKeys):
             return None
     return '-'.join(split)
 
-def readFiles(files):
-    for file in files:
-        with open(file,"r") as fRead:
-            write = file+".elem"
-            with open(write, "w") as fWrite:
-                processLines(fRead, fWrite)
-
 def processLines(fRead, fWrite):
     lines = fRead.read().splitlines()
     for line in lines:
         word = wordToElements(line, tableKeys)
         if word is not None :
             fWrite.write(word +"\n")
+
+def readFiles(files):
+    for file in files:
+        with open(file,"r") as fRead:
+            write = file+".elem"
+            with open(write, "w") as fWrite:
+                processLines(fRead, fWrite)
 
 
 if __name__ == '__main__':
