@@ -1,14 +1,18 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
+import sys
+sys.path.insert(0, '../src')
+from parser import readFiles
 app = Flask(__name__)
 filePath = os.path.join(app.root_path, 'files')
 
 
-@app.route('/file')
+@app.route('/file/<filename>')
 def file(filename):
-    print(file_Path)
-    text = open(os.path.join(filePath, f.filename), 'r+')
+    file = os.path.join(filePath, filename)
+    readFiles([file])
+    text = open(file +'.elem', 'r+')
     content = text.read()
     text.close()
     return render_template('file.html', text=content)
@@ -17,8 +21,9 @@ def file(filename):
 def upload_file():
    if request.method == 'POST':
       f = request.files['file']
-      f.save(os.path.join(filePath, f.filename))
-      redirect(url_for('file', filename = f.filename))
+      filename = secure_filename(f.filename)
+      f.save(os.path.join(filePath, filename))
+      return redirect(url_for('file', filename = filename))
 
    return render_template('index.html')
 

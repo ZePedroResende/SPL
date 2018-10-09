@@ -17,6 +17,7 @@ def wordToElements(word, tableKeys):
     return '-'.join(split)
 
 def processLines(fRead, fWrite):
+    tableKeys = list(map(lambda x: x.lower(), table.keys()))
     lines = fRead.read().splitlines()
     for line in lines:
         word = wordToElements(line, tableKeys)
@@ -32,7 +33,6 @@ def readFiles(files):
 
 
 if __name__ == '__main__':
-    tableKeys = list(map(lambda x: x.lower(), table.keys()))
     if len(sys.argv) > 1:
         readFiles(sys.argv[1:])
     else:
