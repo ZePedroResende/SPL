@@ -1,6 +1,7 @@
 #!/usr/local/bin/python3.7
 import re
 import sys
+import unidecode
 from PeriodicTable import table
 
 
@@ -8,7 +9,11 @@ def regexBuilder(tableKeys):
     sortedTableKeys =  sorted(tableKeys, key=len, reverse=True)
     return re.compile('('+'|'.join(sortedTableKeys)+')')
 
+def decodeWord(word):
+    return unidecode.unidecode(word)
+
 def wordToElements(word, tableKeys):
+    word = decodeWord(word)
     split = re.split(regexBuilder(tableKeys), word)
     split = list(filter(None, split))
     for s in split:
