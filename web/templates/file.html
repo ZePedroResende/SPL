@@ -1,3 +1,37 @@
-<pre>
-{{ text }}
-</pre>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SPLN</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/agency.css') }}" rel="stylesheet">
+</head>
+<body style="background-color: #ced4da;">
+
+    <h1 style="text-align:center; margin-top: 100px"><span style="background-color:white; color:#ced4da;">ESCOLHA O FICHEIRO A SER PROCESSADO</span></h1>
+
+    <div class="row" style="margin: 40px 150px 150px 150px">
+        <div class="col-md-4">
+            <div class="z-depth-1-half mb-4">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/D-glucose-chain-3D-balls.png" class="img-fluid" alt="example placeholder" style="width:300px; display: block; margin: auto">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <pre>
+                {{ text }}
+            </pre>
+        </div>
+        <div class="col-md-4">
+            <div class="z-depth-1-half mb-4">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/D-glucose-chain-3D-balls.png" class="img-fluid" alt="example placeholder" style="width:300px; display: block; margin: auto">
+            </div>
+        </div>
+    </div>
+
+</body>
+
