@@ -19,7 +19,7 @@ def wordToElements(word, tableKeys):
     for s in split:
         if s not in tableKeys :
             return None
-    return '-'.join(split)
+    return '-'.join(map(lambda x: x.title(),split))
 
 def processLines(fRead, fWrite):
     tableKeys = list(map(lambda x: x.lower(), table.keys()))

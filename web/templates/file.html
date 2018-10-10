@@ -1,3 +1,5 @@
 <pre>
-{{ text }}
+{% for word in text %}
+    <a href={{ url_for( 'word' , word = word ) }}> {{word}}</a>
+{% endfor %}
 </pre>
