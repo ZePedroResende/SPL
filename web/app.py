@@ -4,21 +4,35 @@ from werkzeug.utils import secure_filename
 import sys
 import wikipedia
 sys.path.insert(0, '../src')
-from parser import readFiles
+from parser import readFiles, wordToElements
 from PeriodicTable import table
 app = Flask(__name__)
 filePath = os.path.join(app.root_path, 'files')
 
 wikipedia.set_lang("pt")
 
-@app.route('/word/<word>')
-def word(word):
+
+def format_word(word):
     elements = word.split('-')
     wiki = zip (elements, map(lambda x: wikipedia.summary(table[x]["nome"] +' '+x ,sentences=1), elements))
     return render_template('word.html',
         word=''.join(elements).lower().title(),
         content=word,
         elements = wiki)
+
+
+@app.route('/word/<word>', methods = ['GET'])
+def word(word):
+    return format_word(word)
+
+@app.route('/word', methods = ['POST'])
+def word_post():
+    tableKeys = list(map(lambda x: x.lower(), table.keys()))
+    word = request.form['word']
+    print(word)
+    word = wordToElements(word, tableKeys)
+
+    return     format_word(word)
 
 @app.route('/file/<filename>')
 def file(filename):

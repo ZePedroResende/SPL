@@ -6,5 +6,10 @@
             <p><input id="submit_button" type="submit" class="btn btn-success" value="Upload">
         </div>
     </form>
-</div>
+
+
+<form action="{{ url_for('word_post') }}" method="POST">
+    <input type="text" class="form-control" placeholder="palvra" name="word"></input>
+    <input id="submit_button" type="submit" class="btn btn-success" value="Upload">
+</form>
 

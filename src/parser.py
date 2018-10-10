@@ -42,4 +42,5 @@ if __name__ == '__main__':
         readFiles(sys.argv[1:])
     else:
         word = input("Give a word to be transformed\n")
-        print(wordToElements(word))
+        tableKeys = list(map(lambda x: x.lower(), table.keys()))
+        print(wordToElements(word, tableKeys))
