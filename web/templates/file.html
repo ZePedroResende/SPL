@@ -15,24 +15,14 @@
 
     <h1 style="text-align:center; margin-top: 100px"><span style="background-color:white; color:#ced4da;">ESCOLHA O FICHEIRO A SER PROCESSADO</span></h1>
 
-    <div class="row" style="margin: 40px 150px 150px 150px">
+    <div class="container">
+    <div class="row">
+        {% for word in text %}
         <div class="col-md-4">
-            <div class="z-depth-1-half mb-4">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/D-glucose-chain-3D-balls.png" class="img-fluid" alt="example placeholder" style="width:300px; display: block; margin: auto">
-            </div>
+            <a style="width: 80%; display:block; margin: auto; text-align:center; color:black; border:solid; border-color: #ced4da; text-decoration: none" href={{ url_for( 'word' , word = word ) }}> {{word}}</a>
         </div>
-        <div class="col-md-4">
-            <pre>
-                {% for word in text %}
-                    <a href={{ url_for( 'word' , word = word ) }}> {{word}}</a>
-                {% endfor %}
-            </pre>
-        </div>
-        <div class="col-md-4">
-            <div class="z-depth-1-half mb-4">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/D-glucose-chain-3D-balls.png" class="img-fluid" alt="example placeholder" style="width:300px; display: block; margin: auto">
-            </div>
-        </div>
+        {% endfor %}
+    </div>
     </div>
 
 </body>

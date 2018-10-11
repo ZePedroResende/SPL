@@ -1,16 +1,41 @@
-<div>
-    <p>
-{{word}}
-
-    </p>
-    <p>
-{{content}}
-
-    </p>
-
-{% for elem,fact in elements %}
-    <div>{{elem}}</div>
-    <div>{{fact}}</div>
-{% endfor %}
 
 </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SPLN</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/agency.css') }}" rel="stylesheet">
+</head>
+<body style="background-color: #ced4da;">
+    <pre>
+    <h1 style="text-align:center; margin-top: 100px"><span style="border:solid; background-color:white; color:grey;">{{word}}</span></h1>
+
+    <h3 style="text-align:center;"><span style="border:solid; background-color:white; color:grey;">{{content}}</span></h1>
+        {% for elem,fact in elements %}
+        <div class="row" style="margin: 0px 150px 0px 150px">
+            <div class="col-md-4">
+                <div class="z-depth-1-half mb-4">
+                    <img src="/static/images/molecula2.png" class="img-fluid" alt="example placeholder" style="width:300px; display: block; margin: auto">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <img style="width: 70px; display: block; margin:auto" src="/static/images/{{elem}}.png">
+                <p style="white-space: pre-line; word-break: break-all; word-wrap: break-word;">{{fact}}</p>
+            </div>
+            <div class="col-md-4">
+                <div class="z-depth-1-half mb-4">
+                    <img src="/static/images/molecula2.png" class="img-fluid" alt="example placeholder" style="width:300px; display: block; margin: auto">
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </pre>
+
+</body>
