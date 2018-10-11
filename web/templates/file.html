@@ -23,7 +23,9 @@
         </div>
         <div class="col-md-4">
             <pre>
-                {{ text }}
+                {% for word in text %}
+                    <a href={{ url_for( 'word' , word = word ) }}> {{word}}</a>
+                {% endfor %}
             </pre>
         </div>
         <div class="col-md-4">
