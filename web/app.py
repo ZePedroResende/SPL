@@ -14,7 +14,10 @@ wikipedia.set_lang("pt")
 
 def format_word(word):
     elements = word.split('-')
-    wiki = zip (elements, map(lambda x: wikipedia.summary(table[x]["nome"] +' '+x ,sentences=1), elements))
+    try:
+        wiki = zip (elements, map(lambda x: wikipedia.summary(table[x]["nome"] +' '+x, sentences=1), elements))
+    except wikipedia.exceptions.DisambiguationError as e:
+        wiki = zip (elements, map(lambda x: wikipedia.summary(table[x]["nome"] +' '+x + ' elemento' ,sentences=1), elements))
     return render_template('word.html',
         word=''.join(elements).lower().title(),
         content=word,
