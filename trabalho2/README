@@ -1,0 +1,7 @@
+sempre que se quiser correr novamente tem que se eliminar o ficheiro calao.db
+
+o dicionario tem como chave a expressão e como valor um ou dois arrays, sendo o primeiro os sinónimos e o segundo, caso exista, a semàntica/significado
+
+caso não existam sinónimos descarto a expressão
+
+para correr só precisa do creatdb.py_
