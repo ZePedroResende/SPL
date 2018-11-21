@@ -53,5 +53,3 @@ def create():
             dbname = re.sub(r'(.+)(\..+)', r'\1.db', filename)
             generator(filename, dbname)
             printdb(dbname)
-
-create()

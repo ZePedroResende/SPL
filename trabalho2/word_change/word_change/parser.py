@@ -120,6 +120,3 @@ def creator():
         else:
             replace(filename, dbname, outname)
         i += 1
-
-
-creator()
