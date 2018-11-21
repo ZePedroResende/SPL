@@ -5,3 +5,8 @@ caso não existam sinónimos descarto a expressão
 para correr só precisa do creatdb.py
 
 a bd é criada com o mesmo nome que o(s) ficheiro(s) passado(s) e na mesma diretoria deste(s)
+
+para correr o parser.py o primeiro arg tem que ser o nome da bd e os restantes os nomes dos ficheiros
+
+word_change -> biblioteca com o trabalho
+nao sei se é suposto meter o dicionario do stor dentro da biblioteca ou nao
