@@ -10,6 +10,16 @@ def decodeWord(word):
     return unidecode.unidecode(word)
 
 
+def prettyprint(semantica):
+    pretty = ''
+    i=0
+    while (i < len(semantica)-1):
+        pretty = pretty + semantica[i] + '; '
+        i += 1
+    pretty = pretty + semantica[i]
+    return pretty
+
+
 def find(line, s):
     keys = []
     for key in s.keys():
@@ -75,7 +85,7 @@ def spotlight_latex(filename, dbname, outname):
             for key in keys:
                 auxdb = decodeWord(key)
                 if s[key].semantica is not None:
-                    newline = re.sub(auxdb, '['+auxdb+r'] \\footnote{'+s[key].semantica+'}', newline)
+                    newline = re.sub(auxdb, '['+auxdb+r'] \\footnote{'+prettyprint(s[key].semantica)+'}', newline)
                 else:
                     newline = re.sub(auxdb, '['+auxdb+']', newline)
             outfile.write(newline)
@@ -100,7 +110,7 @@ def replace_latex(filename, dbname, outname):
                 rand = randint(0, len(s[key].sinonimos)-1)
                 syn = s[key].sinonimos[rand]
                 if s[key].semantica is not None:
-                    newline = re.sub(auxdb, syn+r' \\footnote{'+s[key].semantica+'}', newline)
+                    newline = re.sub(auxdb, syn+r' \\footnote{'+prettyprint(s[key].semantica)+'}', newline)
                 else:
             	    newline = re.sub(auxdb, syn, newline)
             outfile.write(newline)
