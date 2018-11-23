@@ -5,13 +5,13 @@ import re
 from Word import Word
 
 
-def prettyprint(semantica):
+def prettyprint(lista):
     pretty = ''
     i=0
-    while (i < len(semantica)-1):
-        pretty = pretty + semantica[i] + '; '
+    while (i < len(lista)-1):
+        pretty = pretty + lista[i] + '; '
         i += 1
-    pretty = pretty + semantica[i]
+    pretty = pretty + lista[i]
     return pretty
 
 

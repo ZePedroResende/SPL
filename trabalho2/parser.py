@@ -10,13 +10,13 @@ def decodeWord(word):
     return unidecode.unidecode(word)
 
 
-def prettyprint(semantica):
+def prettyprint(lista):
     pretty = ''
     i=0
-    while (i < len(semantica)-1):
-        pretty = pretty + semantica[i] + '; '
+    while (i < len(lista)-1):
+        pretty = pretty + lista[i] + '; '
         i += 1
-    pretty = pretty + semantica[i]
+    pretty = pretty + lista[i]
     return pretty
 
 
@@ -84,10 +84,10 @@ def spotlight_latex(filename, dbname, outname):
             newline = decodeWord(line)
             for key in keys:
                 auxdb = decodeWord(key)
-                if s[key].semantica is not None:
-                    newline = re.sub(auxdb, '['+auxdb+r'] \\footnote{'+prettyprint(s[key].semantica)+'}', newline)
-                else:
+                if s[key].semantica is None:
                     newline = re.sub(auxdb, '['+auxdb+']', newline)
+                else:
+                    newline = re.sub(auxdb, '['+auxdb+r'] \\footnote{'+prettyprint(s[key].semantica)+'}', newline)
             outfile.write(newline)
 
     text.close()
@@ -109,10 +109,10 @@ def replace_latex(filename, dbname, outname):
                 auxdb = decodeWord(key)
                 rand = randint(0, len(s[key].sinonimos)-1)
                 syn = s[key].sinonimos[rand]
-                if s[key].semantica is not None:
-                    newline = re.sub(auxdb, syn+r' \\footnote{'+prettyprint(s[key].semantica)+'}', newline)
-                else:
+                if s[key].semantica is None:
             	    newline = re.sub(auxdb, syn, newline)
+                else:
+                    newline = re.sub(auxdb, syn+r' \\footnote{'+prettyprint(s[key].semantica)+'}', newline)
             outfile.write(newline)
 
     text.close()
