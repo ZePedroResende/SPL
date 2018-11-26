@@ -1,0 +1,120 @@
+TERM=''barbie''
+VARI=''barbie''
+SENSE={
+  'sem' => 'usa-se para descrever mulheres muito bonitas, vaidosas, pouco inteligentes e que normalmente só pensam em sexo',
+  '!ex' => [
+    'tu só gostas de \'\'barbies\'\'...'
+  ],
+  'level' => 'coloquial',
+  'syn' => [
+    'loira',
+    'menina rocha'
+  ]
+}
+
+
+TERM=''black and decker''
+VARI=''black and decker''
+SENSE={
+  'syn' => [
+    'pila',
+    'badalo',
+    'pincel',
+    'piça',
+    'picha',
+    'caralho',
+    'cacete',
+    'camandro',
+    'pau',
+    'pinto',
+    'ponteiro',
+    'abono de família',
+    'porra',
+    'drejo',
+    'bregalho',
+    'bicha',
+    'vergalho',
+    'piroca',
+    'pirilau',
+    'pichota',
+    'basalto',
+    'banana',
+    'pirola',
+    'lampreão',
+    'pinguelo',
+    'piçalho',
+    'bitola',
+    'blica',
+    'bordalo',
+    'bacamarte',
+    'marsápio',
+    'marsapo',
+    'mangalho',
+    'besugo',
+    'quinta perna do burro',
+    'sabordalhão',
+    'sardão',
+    'tora',
+    'verga'
+  ],
+  '!ex' => [
+    {
+      'frase' => 'o gajo tem cá um \'\'black and decker\'\'',
+      'equiv' => 'um pénis grande'
+    }
+  ],
+  'sem' => 'órgão sexual masculino, pénis, pênis'
+}
+
+
+TERM=''jet leg'' de segunda
+VARI=''jet leg'' (de segunda|)
+SENSE={
+  '!ex' => [
+    'Fala mais baixo que estou com \'\'jet leg\'\''
+  ],
+  'sem' => 'Síndrome que acontece ao voltar ao trabalho ou às aulas após um
+fim de semana de borga. Embora os sintomas possam variar, é habitual
+presenciar-se falta de concentração, fadiga, dores de cabeça, nevoeiro.
+  Em menor quantidade, há quem se queixe do menos crítico \'\'jet leg\'\' de terça,
+..., sexta. Pode ser contagioso.'
+}
+
+
+TERM='à bientôt'
+VARI='à bientôt'
+SENSE={
+  'syn' => [
+    'abientô',
+    'astalavista'
+  ],
+  'sem' => 'expressão de despedida (frequentemente cínica) '
+}
+
+
+TERM=interesseiro
+VARI=interesseiro
+SENSE={
+  'sem' => 'representa alguém que é manhoso e interesseiro',
+  'syn' => [
+    'coninha de sabão',
+    'egoísta',
+    'dissimulado',
+    'manhoso'
+  ]
+}
+
+
+TERM=ser dose
+VARI=ser* dose
+SENSE={
+  'syn' => [
+    '((ser*|) um osso*N) duro*N de roer',
+    'não ser* pêra doce',
+    'ser* um pé no saco'
+  ],
+  'sem' => [
+    'ser difícil',
+    'ser desagradável, incomodar, ser teimoso sem ter razão, incomoda com coisas de somenos importância'
+  ]
+}
