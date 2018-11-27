@@ -2,7 +2,8 @@
 import sys
 import shelve
 import re
-from Word import Word
+import os
+from .Word import Word
 
 
 def prettyprint(lista):
@@ -72,10 +73,12 @@ def generator(filename, dbname):
 
 
 def create():
-    for filename in sys.argv:
-        if filename != 'createdb.py':
-            dbname = re.sub(r'(.+)(\..+)', r'\1.db', filename)
-            generator(filename, dbname)
-            printdb(dbname)
+    if len(sys.argv) > 1:
+        for filename in sys.argv[1:]:
+            if filename != 'createdb.py':
+                dbname = re.sub(r'(.+)(\..+)', r'\1.db', filename)
+                dir = os.getcwd()
+                generator(filename, dbname)
+                printdb(dbname)
 
 create()

@@ -1,0 +1,10 @@
+[console_scripts]
+create = word_change.createdb:create
+creator = word_change.parser:creator
+generator = word_change.createdb:generator
+printdb = word_change.createdb:printdb
+replace = word_change.parser:replace
+replace_latex = word_change.parser:replace_latex
+spotlight = word_change.parser:spotlight
+spotlight_latex = word_change.parser:spotlight_latex
+

@@ -3,7 +3,7 @@ import sys
 import shelve
 import re
 import unidecode
-from Word import Word
+from .Word import Word
 from random import randint
 
 def decodeWord(word):
