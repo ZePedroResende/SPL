@@ -77,7 +77,6 @@ def create():
         for filename in sys.argv[1:]:
             if filename != 'createdb.py':
                 dbname = re.sub(r'(.+)(\..+)', r'\1.db', filename)
-                dir = os.getcwd()
                 generator(filename, dbname)
                 printdb(dbname)
 
