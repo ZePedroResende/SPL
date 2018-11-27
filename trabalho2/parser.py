@@ -26,6 +26,7 @@ def find(line, s):
         auxdb = decodeWord(key)
         auxl = decodeWord(line)
         if re.search(auxdb, auxl):
+            print(key)
             keys.append(key)
     return keys
 
@@ -120,16 +121,16 @@ def replace_latex(filename, dbname, outname):
 
 
 def creator():
-    dbname = sys.argv[1]
-    i = 2
-    while (i < len(sys.argv)):
-        filename = sys.argv[i]
-        outname = re.sub(r'(.+)', r'out_\1', filename)
-        if re.search(r'\.tex$', filename):
-            replace_latex(filename, dbname, outname)
-        else:
-            replace(filename, dbname, outname)
-        i += 1
+    if len(sys.argv) > 2:
+        dbname = sys.argv[1]
+        for filename in sys.argv[2:]:
+            outname = re.sub(r'(.+\/)*(.+)', r'\1out_\2', filename)
+            if re.search(r'\.tex$', filename):
+                replace_latex(filename, dbname, outname)
+            else:
+                replace(filename, dbname, outname)
+    else:
+        print('número de argumentos inválido')
 
 
 creator()

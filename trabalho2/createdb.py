@@ -2,6 +2,7 @@
 import sys
 import shelve
 import re
+import os
 from Word import Word
 
 
@@ -22,7 +23,7 @@ def printdb(dbname):
         print('TERM: '+key)
         value = s[key]
         print('SYN:'+prettyprint(value.sinonimos))
-        if value.semantica is not []:
+        if value.semantica is not None:
             print('SEM: '+prettyprint(value.semantica))
 
 
@@ -72,10 +73,14 @@ def generator(filename, dbname):
 
 
 def create():
-    for filename in sys.argv:
-        if filename != 'createdb.py':
+    if len(sys.argv) > 1:
+        for filename in sys.argv[1:]:
             dbname = re.sub(r'(.+)(\..+)', r'\1.db', filename)
+            dir = os.getcwd()
             generator(filename, dbname)
             printdb(dbname)
+    else:
+        print('número de argumentos inválido')
+
 
 create()
