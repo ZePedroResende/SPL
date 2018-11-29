@@ -1,0 +1,11 @@
+README.md
+setup.py
+word_change/Word.py
+word_change/__init__.py
+word_change/createdb.py
+word_change/parser.py
+word_change.egg-info/PKG-INFO
+word_change.egg-info/SOURCES.txt
+word_change.egg-info/dependency_links.txt
+word_change.egg-info/entry_points.txt
+word_change.egg-info/top_level.txt
