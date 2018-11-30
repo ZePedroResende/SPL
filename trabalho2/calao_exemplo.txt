@@ -81,8 +81,13 @@ presenciar-se falta de concentração, fadiga, dores de cabeça, nevoeiro.
 }
 
 
+<<<<<<< HEAD
 TERM=''à bientôt''
 VARI=''à bientôt''
+=======
+TERM='à bientôt'
+VARI='à bientôt'
+>>>>>>> 998b0867790082bc13ece55b4a887340f8664779
 SENSE={
   'syn' => [
     'abientô',
@@ -91,3 +96,33 @@ SENSE={
   'sem' => 'expressão de despedida (frequentemente cínica) '
 }
 
+<<<<<<< HEAD
+=======
+
+TERM=interesseiro
+VARI=interesseiro
+SENSE={
+  'sem' => 'representa alguém que é manhoso e interesseiro',
+  'syn' => [
+    'coninha de sabão',
+    'egoísta',
+    'dissimulado',
+    'manhoso'
+  ]
+}
+
+
+TERM=ser dose
+VARI=ser* dose
+SENSE={
+  'syn' => [
+    '((ser*|) um osso*N) duro*N de roer',
+    'não ser* pêra doce',
+    'ser* um pé no saco'
+  ],
+  'sem' => [
+    'ser difícil',
+    'ser desagradável, incomodar, ser teimoso sem ter razão, incomoda com coisas de somenos importância'
+  ]
+}
+>>>>>>> 998b0867790082bc13ece55b4a887340f8664779
