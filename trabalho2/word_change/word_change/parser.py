@@ -25,7 +25,7 @@ def find(line, s):
     for key in s.keys():
         auxdb = decodeWord(key)
         auxl = decodeWord(line)
-        if re.search(auxdb, auxl):
+        if re.search(r'($|\s)'+auxdb, auxl):
             keys.append(key)
     return keys
 
