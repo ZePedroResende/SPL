@@ -9,3 +9,5 @@ from .parser import replace_latex
 from .parser import spotlight_latex
 from .parser import replace
 from .parser import spotlight
+
+from .Word import Word

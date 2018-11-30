@@ -2,7 +2,8 @@
 import sys
 import shelve
 import re
-from Word import Word
+import os
+from .Word import Word
 
 
 def prettyprint(lista):
@@ -15,18 +16,26 @@ def prettyprint(lista):
     return pretty
 
 
-def printdb(dbname):
+def printdbAux(dbname):
     s = shelve.open(dbname, flag='r')
     for key in s.keys():
         print('---------------------------------')
         print('TERM: '+key)
         value = s[key]
         print('SYN:'+prettyprint(value.sinonimos))
-        if value.semantica is not []:
+        if value.semantica is not None:
             print('SEM: '+prettyprint(value.semantica))
+    s.close()
+
+def printdb():
+    if len(sys.argv) == 2:
+        dbname = sys.argv[1]
+        printdbAux(dbname)
+    else:
+        print('número de argumentos inválido')
 
 
-def generator(filename, dbname):
+def generatorAux(filename, dbname):
     dic = open(filename, 'r')
     s = shelve.open(dbname)
     in_syn = False
@@ -69,13 +78,25 @@ def generator(filename, dbname):
                 syn.clear()
             sem_found = False
             sem.clear()
+    s.close()
+    dic.close()
+
+
+def generator():
+    if len(sys.argv) == 2:
+        filename = sys.argv[1]
+        dbname = re.sub(r'(.+)(\..+)', r'\1.db', filename)
+        generatorAux(filename, dbname)
+    else:
+        print('número de argumentos inválido')
 
 
 def create():
-    for filename in sys.argv:
-        if filename != 'createdb.py':
+    if len(sys.argv) > 1:
+        for filename in sys.argv[1:]:
             dbname = re.sub(r'(.+)(\..+)', r'\1.db', filename)
-            generator(filename, dbname)
-            printdb(dbname)
+            generatorAux(filename, dbname)
+            printdbAux(dbname)
+    else:
+        print('número de argumentos inválido')
 
-create()

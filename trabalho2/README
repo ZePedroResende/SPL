@@ -1,7 +1,21 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+sempre que se quiser correr novamente tem que se eliminar o ficheiro calao.db
+
+=======
+>>>>>>> 998b0867790082bc13ece55b4a887340f8664779
+>>>>>>> master
 o dicionario tem como chave a expressão e como valor um ou dois arrays, sendo o primeiro os sinónimos e o segundo, caso exista, a semàntica/significado
 
 caso não existam sinónimos descarto a expressão
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+para correr só precisa do creatdb.py_
+=======
+>>>>>>> master
 para correr só precisa do creatdb.py
 
 a bd é criada com o mesmo nome que o(s) ficheiro(s) passado(s) e na mesma diretoria deste(s)
@@ -9,4 +23,9 @@ a bd é criada com o mesmo nome que o(s) ficheiro(s) passado(s) e na mesma diret
 para correr o parser.py o primeiro arg tem que ser o nome da bd e os restantes os nomes dos ficheiros
 
 word_change -> biblioteca com o trabalho
+<<<<<<< HEAD
 nao sei se é suposto meter o dicionario do stor dentro da biblioteca ou nao
+=======
+nao sei se é suposto meter o dicionario do stor dentro da biblioteca ou nao
+>>>>>>> 998b0867790082bc13ece55b4a887340f8664779
+>>>>>>> master

@@ -1,10 +1,25 @@
 #!usr/bin/python3
+<<<<<<< HEAD
+import sys
+=======
+<<<<<<< HEAD
+>>>>>>> master
+import shelve
+import re
+import os
+from Word import Word
+
+
+<<<<<<< HEAD
+=======
+=======
 import sys
 import shelve
 import re
 from Word import Word
 
 
+>>>>>>> master
 def prettyprint(lista):
     pretty = ''
     i=0
@@ -22,7 +37,11 @@ def printdb(dbname):
         print('TERM: '+key)
         value = s[key]
         print('SYN:'+prettyprint(value.sinonimos))
+<<<<<<< HEAD
+        if value.semantica is not None:
+=======
         if value.semantica is not []:
+>>>>>>> master
             print('SEM: '+prettyprint(value.semantica))
 
 
@@ -72,6 +91,19 @@ def generator(filename, dbname):
 
 
 def create():
+<<<<<<< HEAD
+    if len(sys.argv) > 1:
+        for filename in sys.argv[1:]:
+            dbname = re.sub(r'(.+)(\..+)', r'\1.db', filename)
+            dir = os.getcwd()
+            generator(filename, dbname)
+            printdb(dbname)
+    else:
+        print('número de argumentos inválido')
+
+
+create()
+=======
     for filename in sys.argv:
         if filename != 'createdb.py':
             dbname = re.sub(r'(.+)(\..+)', r'\1.db', filename)
@@ -79,3 +111,5 @@ def create():
             printdb(dbname)
 
 create()
+>>>>>>> 998b0867790082bc13ece55b4a887340f8664779
+>>>>>>> master
