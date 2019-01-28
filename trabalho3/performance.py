@@ -1,6 +1,7 @@
 #!/usr/bin/python3
+import sys
 
-def analise(filename1, filename2):
+def analiseAux(filename1, filename2):
     file1 = open(filename1, 'r')
     file2 = open(filename2, 'r')
     text1 = file1.read()
@@ -42,4 +43,10 @@ def analise(filename1, filename2):
     print('Precision: '+ str(precision))
     print('Recall: '+ str(recall))
 
-analise('teste0.txt', 'teste1.txt')
+def analise():
+    if len(sys.argv) == 3:
+        filename1 = sys.argv[1]
+        filename2 = sys.argv[2]
+        analiseAux(filename1, filename2)
+    else:
+        print('número de argumentos inválido')
