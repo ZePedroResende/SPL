@@ -7,26 +7,26 @@ from collections import defaultdict, Counter
 N=7
 
 def buildAux(filename, outname):
-    input_t = open(filename, 'rb')
-    output_t = open(outname, 'wb')
+    input_t = open(filename, 'r')
     ocorrencias = defaultdict(Counter)
 
     for line in input_t.readlines():
         line = re.sub(r'\p{punct}', r' ', line)
         line = re.sub(r'\s+', r' ', line)
-        seq = [tuple(line[i:i+N]) for i in range(0, len(line)-N+1)]
+        seq = [tuple(line[i:i+N]) for i in range(0,len(line) -N + 1)]
         for t in seq:
-            ocorrencias[''.join(t[0:-1])[-1]] += 1
-
-    pickle.dump(ocorrencias, output_t, protocol = -1)
+            ocorrencias[''.join(t[0:-1])][t[-1]] += 1
+    
     input_t.close()
+    output_t = open(outname, 'wb')
+    pickle.dump(ocorrencias, output_t, protocol = -1)
     output_t.close()
 
 
 def build():
     if len(sys.argv) == 2:
         filename = sys.argv[1]
-        outname = re.sub(r'(.+\/)*(.+)', r'\1n-grama_\2', filename)
+        outname = 'dict.pkl'
         buildAux(filename, outname)
     else:
         print('número de argumentos inválido')
@@ -34,26 +34,50 @@ def build():
 
 def add_spaces(filename, dictname, outname):
     f = open(dictname, 'rb')
+    global ocorrencias
     ocorrencias = pickle.load(f)
     f.close()
-    input_t = open(filename, 'rb')
-    output_t = open(outname, 'wb')
-    sentence = []
+    input_t = open(filename, 'r')
+    output_t = open(outname, 'w')
 
     for line in input_t.readlines():
         line = re.sub(r'([\.,;!?\)\]])', r'\1 ', line)
         line = re.sub(r'([\(\[])', r' \1', line)
+        
         for i in range(0, len(line)-N+1):
-            if re.match(r'\p{punct}', line[i+N-1]):
-                sentence.append(line[i:i+N])
-            else:
-                state = line[i:i+N]
-                new_state = try_fix(state, ocorrencias)
-                sentence.append(new_state)
-        sentence = ''.join(sentence)
-        output_t.write(sentence)
-        sentence = []
+            char = line[i+N-1]
+            if not re.match(r'\p{punct}', char) and not re.match(r'\p{punct}', line[i+N-2]):
+                state = line[i:i+N-1]
+                new = try_fix(state, char)
+                l = list(line)
+                l[i-N+1] = new
+                line = "".join(l)
+                print(line)
 
-
-def try_fix(state, ocorrencias):
+        output_t.write(line)
     
+    output_t.close()
+    input_t.close()
+
+
+def try_fix(state, char):
+    if state in ocorrencias:
+        if char in ocorrencias[state]:
+            return char
+        else:
+            l = list(state)
+            l.pop(0)
+            l.append(' ')
+            state = "".join(l)
+            if char in ocorrencias[state]:
+                return ' ' + char
+            else:
+                return char
+    else:
+        return char
+
+
+add_spaces('spaceless_texto_normal.txt', 'dict.pkl', 'final.txt')
+
+
+
