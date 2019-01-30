@@ -4,7 +4,7 @@ import sys
 import pickle
 from collections import defaultdict, Counter
 
-N=7
+N=9
 
 def buildAux(filename, outname):
     input_t = open(filename, 'r')
@@ -32,34 +32,6 @@ def build():
         print('número de argumentos inválido')
 
 
-def add_spaces(filename, dictname, outname):
-    f = open(dictname, 'rb')
-    global ocorrencias
-    ocorrencias = pickle.load(f)
-    f.close()
-    input_t = open(filename, 'r')
-    output_t = open(outname, 'w')
-
-    for line in input_t.readlines():
-        line = re.sub(r'([\.,;!?\)\]])', r'\1 ', line)
-        line = re.sub(r'([\(\[])', r' \1', line)
-        
-        for i in range(0, len(line)-N+1):
-            char = line[i+N-1]
-            if not re.match(r'\p{punct}', char) and not re.match(r'\p{punct}', line[i+N-2]):
-                state = line[i:i+N-1]
-                new = try_fix(state, char)
-                l = list(line)
-                l[i-N+1] = new
-                line = "".join(l)
-                print(line)
-
-        output_t.write(line)
-    
-    output_t.close()
-    input_t.close()
-
-
 def try_fix(state, char):
     if state in ocorrencias:
         if char in ocorrencias[state]:
@@ -77,7 +49,37 @@ def try_fix(state, char):
         return char
 
 
-add_spaces('spaceless_texto_normal.txt', 'dict.pkl', 'final.txt')
+def add_spacesAux(filename, dictname, outname):
+    f = open(dictname, 'rb')
+    global ocorrencias
+    ocorrencias = pickle.load(f)
+    f.close()
+    input_t = open(filename, 'r')
+    output_t = open(outname, 'w')
+
+    for line in input_t.readlines():
+        line = re.sub(r'([\.,;!?\)\]])', r'\1 ', line)
+        line = re.sub(r'([\(\[])', r' \1', line)
+        
+        for i in range(0, len(line)-N+1):
+            char = line[i+N-1]
+            if not re.match(r'\p{punct}', char) and not re.match(r'\p{punct}', line[i+N-2]):
+                state = line[i:i+N-1]
+                l = list(line)
+                l[i+N-1] = try_fix(state, char)
+                line = "".join(l)
+
+        output_t.write(line)
+    
+    output_t.close()
+    input_t.close()
 
 
-
+def add_spaces():
+    if len(sys.argv) == 3:
+        filename = sys.argv[1]
+        dictname = sys.argv[2]
+        outname = re.sub(r'(.+\/)*(.+)', r'\1out_\2', filename)
+        add_spacesAux(filename, dictname, outname)
+    else:
+        print('número de argumentos inválido')
