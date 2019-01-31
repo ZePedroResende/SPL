@@ -13,19 +13,23 @@ def analiseAux(filename1, filename2):
     false_n = 0
     total = len(text1)
     j=0
+    i=0
     
-    for i in range(0, total):
+    while i < total and j < len(text2):
         if text1[i] == ' ' and text2[j] == ' ':
             true_p += 1
+            i += 1
             j += 1
         elif text1[i] != ' ' and text2[j] != ' ':
             true_n += 1
+            i += 1
             j += 1
         elif text1[i] == ' ' and text2[j] != ' ':
             false_n += 1
+            i += 1
         elif text1[i] != ' ' and text2[j] == ' ':
             false_p += 1
-            j += 2
+            j += 1
 
     accuracy = (true_p + true_n) / total
     precision = true_p / (true_p + false_p)

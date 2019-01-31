@@ -58,8 +58,8 @@ def add_spacesAux(filename, dictname, outname):
     output_t = open(outname, 'w')
 
     for line in input_t.readlines():
-        line = re.sub(r'([\.,;!?\)\]])', r'\1 ', line)
-        line = re.sub(r'([\(\[])', r' \1', line)
+        line = re.sub(r'([\.,;!?\)\]\}])', r'\1 ', line)
+        line = re.sub(r'([\(\[\{])', r' \1', line)
         
         for i in range(0, len(line)-N+1):
             char = line[i+N-1]
