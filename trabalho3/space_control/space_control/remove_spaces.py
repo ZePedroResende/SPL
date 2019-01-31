@@ -2,7 +2,7 @@
 import re
 import sys
 
-def remove_espacosAux(filename, outname):
+def remove_spacesAux(filename, outname):
     text = open(filename, 'r')
     outfile = open(outname, 'w')
 
@@ -13,10 +13,10 @@ def remove_espacosAux(filename, outname):
     text.close()
     outfile.close()
 
-def remove_espacos():
+def remove_spaces():
     if len(sys.argv) == 2:
         filename = sys.argv[1]
         outname = re.sub(r'(.+\/)*(.+)', r'\1spaceless_\2', filename)
-        remove_espacosAux(filename, outname)
+        remove_spacesAux(filename, outname)
     else:
         print('número de argumentos inválido')
